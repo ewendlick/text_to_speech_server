@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+      // TODO: handle IP addresses and locations of things
+      const serverIp = '192.168.3.7'
+      const port = '3000'
+      const serverUrl = `http://${serverIp}:${port}`
+
+      const sendText = (text) => {
+        const payload = {
+          headers: {
+            'content-type': 'text/plain'
+          },
+          body: text,
+          method: 'POST'
+        }
+
+        fetch(serverUrl, payload)
+          .catch(error => {
+            console.warn(error)
+          })
+      }
+
+      const sendCustomText = () => {
+        const customText = document.querySelector('#custom-input-field').value
+        if (customText.length === 0) return // TODO: alert user
+
+        sendText(customText)
+      }
+    </script>
+  </head>
+	<body>
+    <h1>Send custom content</h1>
+    <input id="custom-input-field" />
+    <button type="button" onClick="sendCustomText()">Send custom </button>
+
+    <h1>Send premade content</h1>
+    <table>
+      <tr>
+        <td>Hello!</td>
+        <td><button type="button" onClick="sendText('Hello!')">Send</button></td>
+      </tr>
+      <tr>
+        <td>How are you?</td>
+        <td><button type="button" onClick="sendText('How are you?')">Send</button></td>
+      </tr>
+      <tr>
+        <td>I think so too.</td>
+        <td><button type="button" onClick="sendText('I think so too.')">Send</button></td>
+      </tr>
+      <tr>
+        <td>OK</td>
+        <td><button type="button" onClick="sendText('OK')">Send</button></td>
+      </tr>
+      <tr>
+        <td>I am a computer. You can ask me yes or no questions.</td>
+        <td><button onClick="sendText('I am a computer. You can ask me yes or no questions.')">Send</button></td>
+      </tr>
+      <tr>
+        <td>Yes</td>
+        <td><button onClick="sendText('Yes')">Send</button></td>
+      </tr>
+      <tr>
+        <td>No</td>
+        <td><button onClick="sendText('No')">Send</button></td>
+      </tr>
+      <tr>
+        <td>yes yes yes yes...</td>
+        <td><button onClick="sendText('yes yes yes yes yes')">Send</button></td>
+      </tr>
+      <tr>
+        <td>Tootle toot...</td>
+        <td><button onClick="sendText('Tootle toot tootle toot tootle toot')">Send</button></td>
+      </tr>
+      <tr>
+        <td>I don't know</td>
+        <td><button onClick="sendText('I don\'t know')">Send</button></td>
+      </tr>
+      <tr>
+        <td>Tell me about that.</td>
+        <td><button onClick="sendText('Tell me about that.')">Send</button></td>
+      </tr>
+      <tr>
+        <td>What do you like?</td>
+        <td><button onClick="sendText('What do you like?')">Send</button></td>
+      </tr>
+      <tr>
+        <td>Gnocchi</td>
+        <td><button onClick="sendText('gnocchi gnocchi. kiki nono kikikiki ooo kiki ookiki ooki')">Send</button></td>
+      </tr>
+    </table>
+	</body>
+</html>

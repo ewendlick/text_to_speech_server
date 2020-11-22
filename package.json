@@ -1,0 +1,19 @@
+{
+  "name": "text_to_speech",
+  "version": "0.1.0",
+  "description": "Server that receives requests and plays text-to-speech audio on the server itself.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Eli Wendlick",
+  "license": "ISC",
+  "dependencies": {
+    "gtts": "^0.2.1",
+    "koa": "^2.13.0",
+    "koa-bodyparser": "^4.3.0",
+    "koa-router": "^10.0.0",
+    "koa-static": "^5.0.0",
+    "play-sound": "^1.1.3"
+  }
+}
