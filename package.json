@@ -1,6 +1,6 @@
 {
   "name": "text_to_speech",
-  "version": "0.1.0",
+  "version": "0.8.0",
   "description": "Server that receives requests and plays text-to-speech audio on the server itself.",
   "main": "index.js",
   "scripts": {
@@ -9,6 +9,7 @@
   "author": "Eli Wendlick",
   "license": "ISC",
   "dependencies": {
+    "@koa/cors": "^3.1.0",
     "gtts": "^0.2.1",
     "koa": "^2.13.0",
     "koa-bodyparser": "^4.3.0",

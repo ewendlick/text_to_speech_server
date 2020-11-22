@@ -1,35 +1,23 @@
-// 'use strict'
-
 console.log('Starting webserver...')
 const Koa = require('koa')
 const Router = require('koa-router')
 const BodyParser = require('koa-bodyparser')
 const serve = require('koa-static')
+const cors = require('@koa/cors')
 const gTTS = require('gtts')
 const player = require('play-sound')(opts = {})
 	
-const PORT = 3000
+const LOCAL_PORT = 3000
+const PUBLIC_PORT = 9898
 const webserver = new Koa()
 const router = new Router()
 const bodyParserOptions = BodyParser({
 	enableTypes: ['text'] // TODO: consider 'json' option in the future
 })
 
-webserver.use(bodyParserOptions)
-
-
-
-/*
-const playSong = () => {
-	const filename = 'sample_song.mp3'
-
-	let audio = player.play(`audio_output/${filename}`, (error) => {
-	  if (error) throw error
-	})
-
-	// audio.kill()
-}
-*/
+webserver
+  .use(bodyParserOptions)
+  .use(cors())
 
 // TODO: Break into another file and import
 const generateText = (text) => {
@@ -69,12 +57,10 @@ webserver.on('error', error => {
 	log.error('server error', error)
 })
 
-// TODO: consider textLimit, reduce from default of 1mb. Or return a response?
-
 webserver
 	.use(router.routes())
 	.use(router.allowedMethods())
   .use(serve('.'))
 
-webserver.listen(PORT)
-console.log(`Webserver running and listening on port ${PORT}`)
+webserver.listen(LOCAL_PORT)
+console.log(`Webserver running and listening on port ${LOCAL_PORT}`)
