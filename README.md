@@ -6,6 +6,14 @@ This project was originally written to be used with a Raspberry Pi, but any Linu
 
 The server also serves a webpage that makes sending the POST requests quick and easy, and is akin to a soundboard.
 
+# Suggested Use
+
+Convince someone gullible (kids work great for this!) that you've created an AI that is capable of answering questions. Have them hold a conversation with the speaker while you operate the project's dashboard from your mobile phone. Make sure you have the dashboard preconfigured with enough content, then eventually have it mention something very personal about the person.
+
+-or-
+
+Hide the system somewhere and set the volume to be very quiet, then occasionally send it requests to say gibberish. If anyone comments on it, deny hearing anything. This works especially well if you configure it to work from a outside your local area network so you can have the server say things when you aren't there (FYI: A+ alibi)
+
 # Setup
 This setup process assumes that you are using Linux and have already installed Node.js 10 or greater
 
@@ -35,7 +43,9 @@ With the server running, you have two ways of using it; directly sending API req
 
 1) Sending direct requests (`curl -d "This is the text it will convert" -H "Content-Type: text/plain" -X POST http://localhost:3000`)
 
-2) Accessing the dashboard ("index.html") in the browser with a GET request (i.e. http://localhost:3000)
+2) Accessing the dashboard ("index.html") in the browser with a GET request (i.e. http://localhost:3000) and sending requests from there.
+
+![Dashboard image](readme-dashboard.png?raw=true "Dashboard image")
 
 # Additional reading regarding the dev process
 All development was done on a Raspberry Pi 3 B+. The highest version of Node that I could easily install was version 10, which is what this project uses.
