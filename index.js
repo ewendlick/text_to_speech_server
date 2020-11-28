@@ -7,12 +7,11 @@ const cors = require('@koa/cors')
 const gTTS = require('gtts')
 const player = require('play-sound')(opts = {})
 	
-const LOCAL_PORT = 3000
-const PUBLIC_PORT = 9898
+const PORT = 3000
 const webserver = new Koa()
 const router = new Router()
 const bodyParserOptions = BodyParser({
-	enableTypes: ['text'] // TODO: consider 'json' option in the future
+	enableTypes: ['text']
 })
 
 webserver
@@ -34,7 +33,7 @@ const generateText = (text) => {
 }
 
 const playGenerated = (filename) => {
-	let audio = player.play(`audio_output/${filename}`, (error) => {
+	player.play(`audio_output/${filename}`, (error) => {
 	  if (error) throw error
 	})
 }
@@ -62,5 +61,5 @@ webserver
 	.use(router.allowedMethods())
   .use(serve('.'))
 
-webserver.listen(LOCAL_PORT)
-console.log(`Webserver running and listening on port ${LOCAL_PORT}`)
+webserver.listen(PORT)
+console.log(`Webserver running and listening on port ${PORT}`)
